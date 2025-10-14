@@ -64,6 +64,18 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormMasterStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMasterStudent.Designer.cs">
+      <DependentUpon>FormMasterStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMasterTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMasterTeacher.Designer.cs">
+      <DependentUpon>FormMasterTeacher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +84,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMasterStudent.resx">
+      <DependentUpon>FormMasterStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMasterTeacher.resx">
+      <DependentUpon>FormMasterTeacher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

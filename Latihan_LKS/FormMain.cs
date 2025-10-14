@@ -12,9 +12,34 @@ namespace Latihan_LKS
 {
     public partial class FormMain : Form
     {
-        public FormMain()
+        string name;
+        public FormMain(string name)
         {
             InitializeComponent();
+            this.name = name;
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            lblWelcome.Text = $"Welcome, {name}!";
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            new Form1().Show();
+            Hide();
+        }
+
+        private void btnMT_Click(object sender, EventArgs e)
+        {
+            new FormMasterTeacher().Show();
+            Hide();
+        }
+
+        private void btnMS_Click(object sender, EventArgs e)
+        {
+            new FormMasterStudent().Show();
+            Hide();
         }
     }
 }

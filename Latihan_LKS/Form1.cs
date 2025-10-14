@@ -12,6 +12,7 @@ namespace Latihan_LKS
 {
     public partial class Form1 : Form
     {
+        public static string name;
         private DataBaseDataContext db = new DataBaseDataContext();
         public Form1()
         {
@@ -20,11 +21,21 @@ namespace Latihan_LKS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tbName.Text = "Masukkan Nama Anda";
+            tbName.Text = "Purwanto";
+            tbPassword.Text = "123";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string name = tbName.Text;
+            string password = tbPassword.Text;
+
+            if (tbName.Text == "" || tbPassword.Text == "")
+            {
+                MessageBox.Show("All fields must be filled");
+                return;
+            }
+
             var db = new DataBaseDataContext();
 
             var user = db.Teacher_Tables.Where(x => x.Name == tbName.Text && x.Password == tbPassword.Text).FirstOrDefault();
@@ -35,6 +46,14 @@ namespace Latihan_LKS
                 Helper.password = user.Password;
 
                 new FormMain(user.Name).Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("Your data is not valid!");
+
+                tbName.Text = "";
+                tbPassword.Text = "";
             }
         }
     }
