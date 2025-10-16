@@ -29,7 +29,7 @@ namespace Latihan_LKS
             cbogender.DataSource = data;
         }
 
-        void ShowData()
+        void showData()
         {
             dgvData.Columns.Clear();
 
@@ -48,13 +48,13 @@ namespace Latihan_LKS
 
         private void FormMasterStudent_Load(object sender, EventArgs e)
         {
-            ShowData();
+            showData();
             showDataCbo();
         }
 
         private void tbSearch_TextChanged(object sender, EventArgs e)
         {
-            ShowData();
+            showData();
         }
 
         void clearFields()
@@ -70,7 +70,7 @@ namespace Latihan_LKS
         {
             if (tbName.Text == "" || tbAddress.Text == "" || tbPhone.Text == "" || tbClass.Text == "")
             {
-                MessageBox.Show("All fields must be filled");
+                Helper.msw("All fields must be filled");
                 return;
             }
 
@@ -83,9 +83,9 @@ namespace Latihan_LKS
 
             db.Student_Tables.InsertOnSubmit(student);
             db.SubmitChanges();
-            ShowData();
+            showData();
             clearFields();
-            MessageBox.Show("Data successfully added");
+            Helper.msi("Data successfully added");
             selectedId = -1;
         }
 
@@ -106,13 +106,7 @@ namespace Latihan_LKS
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Please select a row to update");
-                return;
-            }
-
-            if (tbName.Text == "" || tbAddress.Text == "" || tbPhone.Text == "" || tbClass.Text == "")
-            {
-                MessageBox.Show("All fields must be filled");
+                Helper.msw("Please select a row to update");
                 return;
             }
 
@@ -124,9 +118,9 @@ namespace Latihan_LKS
             student.Gender = cbogender.Text;
 
             db.SubmitChanges();
-            ShowData();
+            showData();
             clearFields();
-            MessageBox.Show("Data successfully updated");
+            Helper.msi("Data successfully updated");
             selectedId = -1;
         }
 
@@ -134,7 +128,7 @@ namespace Latihan_LKS
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Please select a row to delete");
+                Helper.msw("Please select a row to delete");
                 return;
             }
 
@@ -142,14 +136,14 @@ namespace Latihan_LKS
             db.Student_Tables.DeleteOnSubmit(student);
             db.SubmitChanges();
             clearFields();
-            ShowData();
-            MessageBox.Show("Data successfully deleted");
+            showData();
+            Helper.msi("Data successfully deleted");
             selectedId = -1;
         }
 
         private void btnBack_Click(object sender, EventArgs e)  //Logout button
         {
-            new Form1().Show();
+            new FormMain(Helper.name).Show();
             Hide();
         }
     }

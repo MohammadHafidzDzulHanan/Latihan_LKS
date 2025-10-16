@@ -21,18 +21,18 @@ namespace Latihan_LKS
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            tbName.Text = "Purwanto";
-            tbPassword.Text = "123";
+            tbName.Text = "";
+            tbPassword.Text = "";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string name = tbName.Text;
-            string password = tbPassword.Text;
+            var name = tbName.Text;
+            var password = tbPassword.Text;
 
             if (tbName.Text == "" || tbPassword.Text == "")
             {
-                MessageBox.Show("All fields must be filled");
+                Helper.msw("All fields must be filled");
                 return;
             }
 
@@ -44,13 +44,15 @@ namespace Latihan_LKS
             {
                 Helper.id = user.id;
                 Helper.password = user.Password;
+                Helper.name = user.Name;
 
-                new FormMain(user.Name).Show();
+                FormMain mainForm = new FormMain(user.Name);
+                mainForm.Show();
                 Hide();
             }
             else
             {
-                MessageBox.Show("Your data is not valid!");
+                Helper.msw("Your data is not valid!");
 
                 tbName.Text = "";
                 tbPassword.Text = "";

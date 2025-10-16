@@ -77,7 +77,7 @@ namespace Latihan_LKS
         {
             if(tbName.Text == "" || tbAddress.Text == "" || tbPhone.Text == "" || tbSubject.Text == "" || tbPassword.Text == "")
             {
-                MessageBox.Show("All fields must be filled");
+                Helper.msw("All fields must be filled");
                 return;
             }
 
@@ -93,7 +93,7 @@ namespace Latihan_LKS
             db.SubmitChanges();
             clearFields();
             showData();
-            MessageBox.Show("Data successfully added");
+            Helper.msi("Data successfully added");
             selectedId = -1;
         }
 
@@ -115,13 +115,7 @@ namespace Latihan_LKS
         {
             if(selectedId == -1)
             {
-                MessageBox.Show("Please select a row to update");
-                return;
-            }
-
-            if (tbName.Text == "" || tbAddress.Text == "" || tbPhone.Text == "" || tbSubject.Text == "" || tbPassword.Text == "")
-            {
-                MessageBox.Show("All fields must be filled");
+                Helper.msw("Please select a row to update");
                 return;
             }
 
@@ -137,15 +131,15 @@ namespace Latihan_LKS
             db.SubmitChanges();
             clearFields();
             showData();
-            MessageBox.Show("Data successfully updated");
+            Helper.msi("Data successfully updated");
             selectedId = -1;
         }
 
-        private void button2_Click(object sender, EventArgs e)  //delete
+        private void btnDelete_Click(object sender, EventArgs e)
         {
             if (selectedId == -1)
             {
-                MessageBox.Show("Please select a row to delete");
+                Helper.msw("Please select a row to delete");
                 return;
             }
 
@@ -154,13 +148,13 @@ namespace Latihan_LKS
             db.SubmitChanges();
             clearFields();
             showData();
-            MessageBox.Show("Data successfully deleted");
+            Helper.msi("Data successfully deleted");
             selectedId = -1;
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
-            new Form1().Show();
+            new FormMain(Helper.name).Show();
             Hide();
         }
     }
